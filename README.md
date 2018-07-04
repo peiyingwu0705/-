@@ -2,6 +2,6 @@
 嗨~我是東華經濟系吳沛穎(410742010)
 # week1
 *課堂上
-Created GitHub account
+ Created GitHub account
 
 *回家後
