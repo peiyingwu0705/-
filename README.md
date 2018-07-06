@@ -7,8 +7,9 @@
 
 希望未來能善用課程所學的技能
 # week1
-*課堂上
+*In class
 
- Created GitHub account
+ 建立GitHub帳號
 
-*回家後
+ 安裝R&R Studio
+*At home
