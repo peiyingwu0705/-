@@ -9,6 +9,8 @@
 # week1
 *In class
 
+Morning
+
  建立GitHub帳號
 
  安裝R&R Studio
