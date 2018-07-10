@@ -12,6 +12,12 @@
 Morning
 
  建立GitHub帳號
+ 
+ 建立repository
+ 
+ 編輯README.md
+ 
+Afternoon
 
  安裝R&R Studio
  
