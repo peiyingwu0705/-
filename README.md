@@ -20,3 +20,11 @@
  
 * At home
 [hw1.html](https://peiyingwu0705.github.io/-/hw1/hw_1.html)
+
+# week2
+* In class
+
+  Practice task2_part2
+
+* At home
+
