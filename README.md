@@ -4,19 +4,19 @@
 要就讀的校系是東華經濟系
 
 # week1
-*In class
+* In class
 
-Morning
+  Morning
 
- 建立GitHub帳號
+  建立GitHub帳號
  
- 建立repository
+  建立repository
  
- 編輯README.md
+  編輯README.md
  
-Afternoon
+  Afternoon
 
- 安裝R&R Studio
+  安裝R&R Studio
  
-*At home
+* At home
 [hw1.html](https://peiyingwu0705.github.io/-/hw1/hw_1.html)
