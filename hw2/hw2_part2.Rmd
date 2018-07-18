@@ -3,17 +3,17 @@ title: "hw2 part2"
 output: html_document
 ---
 
-```{r setup, include=FALSE}
+```{r warning = FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 
 source('pttTestFunction.R')
 id = c(1:10)
 URL = paste0("https://www.ptt.cc/bbs/Zastrology/index",id,".html")
 filename = paste0(id, ".txt")
-pttTestFunction(URL[1], filename[1])
-mapply(pttTestFunction, 
-       URL = URL, filename = filename)
-rm(list=ls(all.names = TRUE))
+#pttTestFunction(URL[1], filename[1])
+#mapply(pttTestFunction, 
+#       URL = URL, filename = filename)
+#rm(list=ls(all.names = TRUE))
 library(NLP)
 library(tm)
 library(jiebaRD)
@@ -28,6 +28,9 @@ toSpace <- content_transformer(function(x, pattern) {
   return (gsub(pattern, " ", x))
 }
 )
+```
+
+```{r}
 docs <- tm_map(docs, toSpace, "※")
 docs <- tm_map(docs, toSpace, "◆")
 docs <- tm_map(docs, toSpace, "‧")
@@ -53,7 +56,9 @@ docs <- tm_map(docs, toSpace, "有")
 docs <- tm_map(docs, toSpace, "不")
 docs <- tm_map(docs, toSpace, "很")
 docs <- tm_map(docs, toSpace, "又")
+```
 
+```{r}
 #移除標點符號 (punctuation)
 #移除數字 (digits)、空白 (white space)
 docs <- tm_map(docs, removePunctuation)
@@ -70,6 +75,9 @@ freqFrame = as.data.frame(table(unlist(seg)))
 freqFrame = freqFrame[order(freqFrame$Freq,decreasing=TRUE), ]
 library(knitr)
 kable(head(freqFrame), format = "markdown")
+```
+
+```{r}
 wordcloud(freqFrame$Var1,freqFrame$Freq,
           scale=c(5,0.1),min.freq=30,max.words=150,
           random.order=TRUE, random.color=FALSE, 
