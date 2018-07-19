@@ -11,9 +11,11 @@ ggplot(data = iris, aes(x=Petal.Length, y=Petal.Width))+geom_bar(stat = "identit
 
 #
 
-data("Animals")
+data("Cars93")
 
-ggplot(data=Animals, aes(x=body, y=brain, colour =body))+geom_point()
+Cars93
+
+ggplot(data=Cars93, aes(x=Min.Price, y=Max.Price, colour =Manufacturer))+geom_point()
 
 
 ggplot(data=iris, aes(x=Petal.Length, y=Petal.Width, colour =Species))+geom_point()

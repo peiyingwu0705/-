@@ -23,7 +23,7 @@ ggplot(data = iris, aes(x=Petal.Length, y=Petal.Width))+geom_bar(stat = "identit
 
 ```
 
-#´²§G¹Ï
+#æ•£ä½ˆåœ–
 #####Data from 93 Cars on Sale in the USA in 1993
 
 ```{r}
