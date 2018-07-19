@@ -1,0 +1,68 @@
+---
+title: "hw2_part1"
+output: html_document
+---
+
+#Bar Graph
+#####Housing Tax in Suburbs of Boston
+```{r}
+knitr::opts_chunk$set(echo = TRUE)
+
+library(ggplot2)
+library(MASS)
+ggplot(data=Boston, aes(x =tax ))+geom_bar(fill ="blue",colour="blue")
+
+```
+
+```{r}
+
+data("iris")
+iris
+
+ggplot(data = iris, aes(x=Petal.Length, y=Petal.Width))+geom_bar(stat = "identity", fill="purple")
+
+```
+
+#´²§G¹Ï
+#####Data from 93 Cars on Sale in the USA in 1993
+
+```{r}
+
+library(ggplot2)
+library(MASS)
+data("Cars93")
+
+Cars93
+
+ggplot(data=Cars93, aes(x=Min.Price, y=Max.Price, colour =Manufacturer))+geom_point()
+
+```
+```{r}
+
+ggplot(data=iris, aes(x=Petal.Length, y=Petal.Width, colour =Species))+geom_point()
+
+```
+
+#Histogram
+
+```{r}
+
+
+data("cats")
+
+ggplot(data =cats, aes(x=Bwt, fill= Sex))+geom_histogram()
+
+```
+```{r}
+ggplot(data =cats, aes(x=Bwt, y=Hwt, fill= Sex))+geom_histogram(stat="identity")
+
+```
+
+#Boxplot
+
+```{r}
+
+
+ggplot(data=Cars93, aes(x=Manufacturer, y=Price))+geom_boxplot(fill="orange", colour="gray")
+
+```
