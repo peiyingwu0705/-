@@ -3,28 +3,33 @@
 
 要就讀的校系是東華經濟系
 
-# Week1
+## Week1
 * In class
+  
+  *  Morning
 
-  Morning
+     * 建立GitHub帳號
+ 
+     * 建立repository
+ 
+     * 編輯README.md
+ 
+  * Afternoon
 
-  建立GitHub帳號
- 
-  建立repository
- 
-  編輯README.md
- 
-  Afternoon
-
-  安裝R&R Studio
+     * 安裝R&R Studio
  
 * At home
 [hw1.html](https://peiyingwu0705.github.io/-/hw1/hw_1.html)
 
-# Week2
+## Week2
 * In class
-
-  Practice task2_part2
+    * Morning
+         * Data Visualization
+         * 使用R dataset練習ggplot2作圖
+   
+    * Afternoon
+   
+         * Practice task2_part2
 
 * At home
 
@@ -32,6 +37,9 @@
 
 [hw2.part2.html](https://peiyingwu0705.github.io/Peiying/hw2/hw2_part2.html)
 
-# Week3
+## Week3
 * In class
+    * Morning
+         * 探索式資料分析(Exploratory Data Analysis)
+         * 練習從閱讀Kaggle Script做EDA rmd
 [hw3.part1.html(EDA)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part1.html)
