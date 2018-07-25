@@ -3,7 +3,7 @@
 
 要就讀的校系是東華經濟系
 
-# week1
+# Week1
 * In class
 
   Morning
@@ -21,7 +21,7 @@
 * At home
 [hw1.html](https://peiyingwu0705.github.io/-/hw1/hw_1.html)
 
-# week2
+# Week2
 * In class
 
   Practice task2_part2
@@ -31,3 +31,7 @@
 [hw2.part1.html](https://peiyingwu0705.github.io/Peiying/hw2/hw2_part1.html)
 
 [hw2.part2.html](https://peiyingwu0705.github.io/Peiying/hw2/hw2_part2.html)
+
+# Week3
+* In class
+[hw3.part1.html(EDA)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part1.html)
