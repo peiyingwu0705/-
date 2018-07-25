@@ -1,0 +1,133 @@
+---
+title: 'House prices: Lasso, XGBoost, and a detailed EDA'
+output: html_document
+---
+##Data From https://www.kaggle.com/erikbruin/house-prices-lasso-xgboost-and-a-detailed-eda/data
+#Read data
+```{r}
+sample_submission = read.csv("./house_price_data/sample_submission.csv")
+test <- read.csv("./house_price_data/test.csv")
+train = read.csv("./house_price_data/train.csv")
+
+
+```
+#load packages
+```{r}
+library(ggplot2)
+library(ggrepel)
+library(knitr)
+library(dplyr)
+library(plyr)
+library(caret)
+library(gridExtra)
+library(scales)
+library(Rmisc)
+library(randomForest)
+library(psych)
+library(xgboost)
+
+```
+
+#The response variable; SalePrice
+##As you can see, the sale prices are right skewed. This was expected as few people can afford very expensive houses.
+
+```{r}
+test_labels <- test$Id
+test$Id <- NULL
+train$Id <- NULL
+test$SalePrice <- NA
+all <- rbind(train, test)
+
+ggplot(data=all[!is.na(all$SalePrice),], aes(x=SalePrice)) +
+  geom_histogram(fill="blue", binwidth = 10000) +
+  scale_x_continuous(breaks= seq(0, 800000, by=100000))
+
+```
+
+#The most important numeric predictors
+##The character variables need some work before using them. 
+##To see which numeric variables have a high correlation with the SalePrice.
+###We can see OverallQual has the highest correlation with the SalePrice.
+
+```{r}
+numericVars <- which(sapply(all, is.numeric)) #index vector numeric variables
+numericVarNames <- names(numericVars) #saving names vector for use later on
+cat('There are', length(numericVars), 'numeric variables')
+## There are 37 numeric variables
+all_numVar <- all[, numericVars]
+cor_numVar <- cor(all_numVar, use="pairwise.complete.obs") #correlations of all numeric variables
+
+#sort on decreasing correlations with SalePrice
+cor_sorted <- as.matrix(sort(cor_numVar[,'SalePrice'], decreasing = TRUE))
+#select only high corelations
+CorHigh <- names(which(apply(cor_sorted, 1, function(x) abs(x)>0.5)))
+cor_numVar <- cor_numVar[CorHigh, CorHigh]
+library(corrplot)
+corrplot.mixed(cor_numVar, tl.col="black", tl.pos = "lt")
+
+```
+
+#Overall Quality
+##Overall Quality rates the overall material and finish of the house on a scale from 1 (very poor) to 10 (very excellent).
+###Conclusion:Expensive houses have better overall quallities.
+```{r}
+ggplot(data=all[!is.na(all$SalePrice),], aes(x=factor(OverallQual), y=SalePrice))+
+  geom_boxplot(col='blue') + labs(x='Overall Quality') +
+  scale_y_continuous(breaks= seq(0, 800000, by=100000))
+
+```
+
+#Above Grade (Ground) Living Area (square feet)
+##The numeric variable with the second highest correlation with SalesPrice is the Above Grade Living Area. This make a lot of sense; big houses are generally more expensive.
+###Conclusion:There are correlations between SalesPrice and locations.
+```{r}
+ggplot(data=all[!is.na(all$SalePrice),], aes(x=GrLivArea, y=SalePrice))+
+  geom_point(col='blue') + geom_smooth(method = "lm", se=FALSE, color="black", aes(group=1)) +
+  scale_y_continuous(breaks= seq(0, 800000, by=100000)) +
+  geom_text_repel(aes(label = ifelse(all$GrLivArea[!is.na(all$SalePrice)]>4500, rownames(all), '')))
+
+
+```
+
+```{r}
+all[c(524, 1299), c('SalePrice', 'GrLivArea', 'OverallQual')]
+```
+
+```{r}
+##      SalePrice GrLivArea OverallQual
+## 524     184750      4676          10
+## 1299    160000      5642          10
+```
+
+```{r}
+NAcol <- which(colSums(is.na(all)) > 0)
+sort(colSums(sapply(all[NAcol], is.na)), decreasing = TRUE)
+```
+
+```{r}
+##       PoolQC  MiscFeature        Alley        Fence    SalePrice 
+##         2909         2814         2721         2348         1459 
+##  FireplaceQu  LotFrontage  GarageYrBlt GarageFinish   GarageQual 
+##         1420          486          159          159          159 
+##   GarageCond   GarageType     BsmtCond BsmtExposure     BsmtQual 
+##          159          157           82           82           81 
+## BsmtFinType2 BsmtFinType1   MasVnrType   MasVnrArea     MSZoning 
+##           80           79           24           23            4 
+##    Utilities BsmtFullBath BsmtHalfBath   Functional  Exterior1st 
+##            2            2            2            2            1 
+##  Exterior2nd   BsmtFinSF1   BsmtFinSF2    BsmtUnfSF  TotalBsmtSF 
+##            1            1            1            1            1 
+##   Electrical  KitchenQual   GarageCars   GarageArea     SaleType 
+##            1            1            1            1            1
+```
+
+```{r}
+cat('There are', length(NAcol), 'columns with missing values')
+```
+
+```{r}
+## There are 35 columns with missing values
+```
+
+##學習筆記
+###要記得library才不會畫不出圖
