@@ -20,7 +20,7 @@
  
 * At home
 
-  * [hw1.html](https://peiyingwu0705.github.io/-/hw1/hw_1.html)
+  * [hw1.html](https://peiyingwu0705.github.io/Peiying/hw1/hw_1)
 
 ## Week2
 * In class
