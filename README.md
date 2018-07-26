@@ -46,4 +46,4 @@
     * Afternoon
 * At home    
   * [hw3.part1.html(EDA)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part1.html)
-  
+  * [hw3.part2.html(TF-IDF_PCA_K-means)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part2.html)
