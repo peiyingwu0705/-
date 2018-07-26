@@ -109,5 +109,10 @@ km <- kmeans(ind.coord2, 3)
 plot(ind.coord2, col = km$cluster)
 points(km$centers, col = 1:3, pch = 8, cex = 2)
 ```
+
+
+
+
+
 ##學習紀錄
 ###Query of Words & temp graph堅持好久還是沒畫出來好傷心.再接再厲
