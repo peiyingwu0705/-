@@ -63,6 +63,7 @@
        * 業界分享講座(叡揚資訊)
      * Afternoon
        * Shiny
+       * [Learn Shiny](https://shiny.rstudio.com/tutorial/)
        
 ## Week6
 * In class
