@@ -47,3 +47,24 @@
 * At home    
   * [hw3.part1.html(EDA)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part1.html)
   * [hw3.part2.html(TF-IDF_PCA_K-means)](https://peiyingwu0705.github.io/Peiying/hw3/hw3_part2.html)
+
+## Week4
+* In class
+     * Morning
+       * 從week3 task1進行深度EDA
+     * Afternoon
+       * 透過迴歸分析回答提出的問題
+* At home
+
+
+## Week5
+* In class
+     * Morning
+       * 業界分享講座(叡揚資訊)
+     * Afternoon
+       * Shiny
+       * [Learn Shiny](https://shiny.rstudio.com/tutorial/)
+       
+## Week6
+* In class
+     * Presentation
