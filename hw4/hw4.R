@@ -61,17 +61,17 @@ ggplot(data = dta,
 ##2Story的價格較高
 
 ##(m1)推測房屋形式和建造年份有關
-anova(m1 <- lm(dta$SalePrice ~ dta$HouseStyle, data = dta))
+anova(m1 <- lm(SalePrice ~ HouseStyle, data = dta))
 
 ggplot(data = dta, 
-       aes(group = dta$HouseStyle, 
-           y = dta$SalePrice, x = dta$YearBuilt)) +
+       aes(group = HouseStyle, 
+           y = SalePrice, x = YearBuilt)) +
   geom_point() +
   stat_smooth(method = 'lm', se = F) +
-  stat_smooth(aes(group = dta$HouseStyle, 
-                  y = dta$SalePrice, x = dta$YearBuilt), 
+  stat_smooth(aes(group = HouseStyle, 
+                  y = SalePrice, x = YearBuilt), 
               method = 'lm', se = F) + 
-  facet_grid( . ~   dta$HouseStyle) +
+  facet_grid( . ~   HouseStyle) +
   labs(x = 'YearBuilt', y = 'SalePrice')
 ##p<0.05,房屋形式和建屋年份有關(可能每個階段流行不同的形式)
 
@@ -93,6 +93,7 @@ anova(m3, m2)
 #比較在控制子女數量下，年齡的效果
 (list[[2]]$r.sq - list[[1]]$r.sq)/list[[1]]$r.sq
 anova(m1, m2)
+
 
 
 require(coefplot)
