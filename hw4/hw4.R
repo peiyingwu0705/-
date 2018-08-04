@@ -28,7 +28,7 @@ with(dta ,
 
 ##用 t-test 檢驗房屋形式是否存在房價差異
 #此函數會預設進行 Welch 校正，以處理兩樣本變異數不相同的問題
-t.test(c ~ Street, data = dta)
+t.test(SalePrice ~ Street, data = dta)
 #可加上參數 var.equal=TRUE 來假設變異數同值(不做Welch校正)
 t.test(SalePrice ~ Street, data = dta, var.equal = TRUE)
 
