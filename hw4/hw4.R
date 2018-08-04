@@ -44,7 +44,7 @@ dta$HouseStyle <- factor(dta$HouseStyle,
                                             '1.5Unf',
                                             '1Story',
                                             '2.5Fin',
-                                            '2,5Unf',
+                                            '2.5Unf',
                                             '2Story',
                                             'SFoyer',
                                             'SLvl'
