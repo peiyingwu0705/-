@@ -40,13 +40,15 @@ t.test(SalePrice ~ Street, data = dta, var.equal = TRUE)
 library(Hmisc)
 #排定欄位順序(order of factors)
 dta$HouseStyle <- factor(dta$HouseStyle, 
-                                 levels = c('1Story',
+                                 levels = c('1.5Fin',
+                                            '1.5Unf',
+                                            '1Story',
+                                            '2.5Fin',
+                                            '2,5Unf',
                                             '2Story',
-                                            '1.5Fin',
-                                            'SLvl', 
                                             'SFoyer',
-                                            '2.5Unf',
-                                            'NA'))
+                                            'SLvl'
+                                            ))
 
 #看不同house style下的房價
 tapply(dta$SalePrice, dta$HouseStyle, mean)
