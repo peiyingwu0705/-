@@ -36,7 +36,7 @@ t.test(SalePrice ~ Street, data = dta, var.equal = TRUE)
 
 
 
-##Part2:House style v.s Sale prices
+##Part2:House style & YearBuilt v.s Sale prices
 library(Hmisc)
 #排定欄位順序(order of factors)
 dta$HouseStyle <- factor(dta$HouseStyle, 
@@ -53,7 +53,7 @@ tapply(dta$SalePrice, dta$HouseStyle, mean)
 
 #同一house style下的房價平均數&信賴區間
 ggplot(data = dta, 
-       aes(x = dta$HouseStyle, y = dta$SalePrice)) +
+       aes(x = HouseStyle, y = SalePrice)) +
   stat_summary(fun.data = 'mean_cl_boot', size = 1)+
   geom_hline(yintercept = mean(dta$SalePrice) , 
              linetype = 'dotted')+
@@ -85,30 +85,22 @@ anova(m3 <- update(m2, . ~ . - HouseStyle,  data = dta))
 ##從p<2.2e-16可得知年份對房價影響較大,房屋形式則較小
 
 #將結果放在一個list中
-list <- lapply(list(m1, m2, m3), summary)
-View(list)
+res_lm <- lapply(list(m1, m2, m3), summary)
 #比較在控制年份下house style對房價的影響
-(list[[2]]$r.sq - list[[3]]$r.sq)/list[[2]]$r.sq
+(res_lm[[2]]$r.sq - res_lm[[3]]$r.sq)/res_lm[[2]]$r.sq
 anova(m3, m2)
-#比較在控制子女數量下，年齡的效果
-(list[[2]]$r.sq - list[[1]]$r.sq)/list[[1]]$r.sq
+
+#比較在控制房屋形式下，建造年分的效果
+(res_lm[[2]]$r.sq - res_lm[[1]]$r.sq)/res_lm[[1]]$r.sq
 anova(m1, m2)
 
 
 
 require(coefplot)
-m2 <- lm(dta$SalePrice ~ dta$HouseStyle + dta$YearBuilt -1)
+m2 <- lm(SalePrice ~ HouseStyle + YearBuilt -1)
 coefplot(m2, xlab = 'estimated value', ylab = 'regression variable', title = 'reaction variable = SalePrice')
 
 #把資料與迴歸分析的預測值、殘差與影響度放進資料
-
-### 以下用平均數，來填補某一欄位的遺漏值
-mean.data <- dta
-
-mean.1 <- mean(mean.data[1:1460,], na.rm = T)  # 第一欄位的平均數
-na.rows <- is.na(mean.data[1:1460,])           # 第一欄位中，有遺漏值存在的資料
-
-
 
 fit_m2 <- data.frame(dta[, c(17, 20, 81)], fitted = fitted(m2), resid = resid(m2),
                      infl = influence(m2)$hat)
