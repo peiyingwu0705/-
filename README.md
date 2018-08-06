@@ -55,6 +55,7 @@
      * Afternoon
        * 透過迴歸分析回答提出的問題
 * At home
+  * [hw4.html(深度EDA)](https://peiyingwu0705.github.io/Peiying/hw4/hw4.html)
 
 
 ## Week5
