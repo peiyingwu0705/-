@@ -68,4 +68,6 @@
        
 ## Week6
 * In class
-     * Presentation
+     * [Final Project](https://ruxiuhsiao.shinyapps.io/final-report/)
+     * [PPT](https://docs.google.com/presentation/d/1SWc64z9nywwmSg6SjD8wBNfPvonynLM5hnwPuicYFDA/edit#slide=id.g35f391192_00)
+    
